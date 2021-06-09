@@ -1,7 +1,11 @@
 const { src, dest, watch, parallel, series } = require('gulp'),
     sass = require('gulp-sass'),
     clean_css = require('gulp-clean-css'),
-    file_include = require('gulp-file-include');
+    file_include = require('gulp-file-include'),
+    ttf2woff2 = require('gulp-ttf2woff2'),
+    ttf2woff = require('gulp-ttf2woff'),
+    ttf2eot = require('gulp-ttf2eot'),
+    ttf2svg = require('gulp-ttf-svg');
 
 function toCss() {
     return src('./res/style/*.scss')
@@ -24,11 +28,30 @@ function includeHtml() {
         .pipe(dest('./public/'));
 }
 
+function fontfacegen() {
+    src('./res/fonts/*.ttf')
+        .pipe(ttf2woff2())
+        .pipe(dest('./public/fonts/'));
+    src('./res/fonts/*.ttf')
+        .pipe(ttf2woff())
+        .pipe(dest('./public/fonts/'));
+    src('./res/fonts/*.ttf')
+        .pipe(ttf2eot())
+        .pipe(dest('./public/fonts/'));
+    src('./res/fonts/*.ttf')
+        .pipe(ttf2svg())
+        .pipe(dest('./public/fonts/'));
+    src('./res/fonts/*.ttf')
+        .pipe(dest('./public/fonts/'));
+}
+
 function watching() {
     watch('./res/style/*.scss', toCss);
     watch('./public/css/*.css', minifyCss);
     watch('./res/*.html', includeHtml);
+    watch('./res/fonts/*.ttf', fontfacegen);
 }
 
-exports.dev = parallel(series(toCss, minifyCss), includeHtml);
+exports.font = fontfacegen;
+exports.dev = parallel(series(toCss, minifyCss), includeHtml, fontfacegen);
 exports.watch = watching;
