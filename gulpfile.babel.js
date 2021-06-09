@@ -45,11 +45,12 @@ function fontfacegen() {
         .pipe(dest('./public/fonts/'));
 }
 
-function watching() {
-    watch('./res/style/*.scss', toCss);
+function watching(done) {
+    watch(['./res/style/*.scss', './res/components/*.scss', './res/components/**/*.scss'], toCss);
     watch('./public/css/*.css', minifyCss);
     watch('./res/*.html', includeHtml);
     watch('./res/fonts/*.ttf', fontfacegen);
+    done();
 }
 
 exports.font = fontfacegen;
