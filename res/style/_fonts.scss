@@ -1,8 +1,16 @@
-@font-face {
-    font-family: 'Roboto-Black';
-    src: url('../fonts/Roboto-Black.eot?') format('eot'),
-    url('../fonts/Roboto-Black.woff2') format('woff2'),
-    url('../fonts/Roboto-Black.woff') format('woff'),
-    url('../fonts/Roboto-Black.ttf') format('truetype'),
-    url('../fonts/Roboto-Black.svg#Roboto-Black') format('svg');
+@mixin font-face($font-name, $file-name, $font-weight: normal, $font-style: normal) {
+    $path: '../fonts/#{$file-name}';
+    @font-face {
+        font-family: $font-name;
+        font-weight: $font-weight;
+        font-style: $font-style;
+        src: url('#{$path}.eot');
+        src: url('#{$path}.eot?#iefix') format('embedded-opentype'),
+        url('#{$path}.woff2') format('woff2'),
+        url('#{$path}.woff') format('woff'),
+        url('#{$path}.ttf')  format('truetype'),
+        url('#{$path}.svg##{$font-name}') format('svg');
+    }
 }
+
+@include font-face(Roboto, 'Roboto-Black', 900, normal);
