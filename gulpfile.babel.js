@@ -4,7 +4,7 @@ const { src, dest, watch, parallel, series } = require('gulp'),
     file_include = require('gulp-file-include');
 
 function toCss() {
-    return src('./res/sass/*.scss')
+    return src('./res/style/*.scss')
         .pipe(sass())
         .pipe(dest('./public/css'));
 }
@@ -25,7 +25,7 @@ function includeHtml() {
 }
 
 function watching() {
-    watch('./res/sass/*.scss', toCss);
+    watch('./res/style/*.scss', toCss);
     watch('./public/css/*.css', minifyCss);
     watch('./res/*.html', includeHtml);
 }
