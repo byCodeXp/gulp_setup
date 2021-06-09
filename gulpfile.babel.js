@@ -1,23 +1,34 @@
-const gulp = require('gulp');
-const g_sass = require('gulp-sass');
-const g_css = require('gulp-clean-css');
+const { src, dest, watch, parallel, series } = require('gulp'),
+    sass = require('gulp-sass'),
+    clean_css = require('gulp-clean-css'),
+    file_include = require('gulp-file-include');
 
-function sass() {
-    return gulp.src('./res/sass/*.scss')
-        .pipe(g_sass())
-        .pipe(gulp.dest('./public/css'));
+function toCss() {
+    return src('./res/sass/*.scss')
+        .pipe(sass())
+        .pipe(dest('./public/css'));
 }
 
-function css() {
-    return gulp.src('./public/css/*.css')
-        .pipe(g_css())
-        .pipe(gulp.dest('./public/css'));
+function minifyCss() {
+    return src('./public/css/*.css')
+        .pipe(clean_css())
+        .pipe(dest('./public/css'));
 }
 
-function watch() {
-    gulp.watch('./res/sass/*.scss', sass);
-    gulp.watch('./public/css/*.css', css);
+function includeHtml() {
+    return src('./res/*.html')
+        .pipe(file_include({
+            prefix: '@',
+            basepath: '@file'
+        }))
+        .pipe(dest('./public/'));
 }
 
-exports.dev = gulp.series(sass, css);
-exports.watch = watch;
+function watching() {
+    watch('./res/sass/*.scss', toCss);
+    watch('./public/css/*.css', minifyCss);
+    watch('./res/*.html', includeHtml);
+}
+
+exports.dev = parallel(series(toCss, minifyCss), includeHtml);
+exports.watch = watching;
