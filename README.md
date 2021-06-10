@@ -1,4 +1,23 @@
 # Gulp Setup
+
+### Requirements
+
+- Node.js
+- Gulp
+
+### Dependencies
+- @babel/core
+- @babel/preset-env
+- @babel/register
+- del
+- gulp
+- gulp-clean-css
+- gulp-html-extend
+- gulp-sass
+- gulp-ttf-svg
+- gulp-ttf2eot
+- gulp-ttf2woff
+- gulp-ttf2woff2
 ### Files Structure - Tree
 ```
 ┌ modules                       ┌───┬───────┬───────┬───────────┬─────────┬───────────┬─────┬─────────┬───┐
