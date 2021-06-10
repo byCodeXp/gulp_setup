@@ -2,16 +2,13 @@ import { watch, parallel, series } from 'gulp';
 
 import { clean } from './modules/clean';
 import { styles } from './modules/styles';
-import { fileInclude } from './modules/file_include';
 import { fontGen } from './modules/font_gen';
+import { blades } from './modules/blades';
 
-// function watching(done) {
-//     watch(['./res/style/*.scss', './res/components/*.scss', './res/components/**/*.scss'], style);
-//     watch('./res/*.html', includeHtml);
-//     watch('./res/fonts/*.ttf', fontFaceGen);
-//     done();
-// }
+exports.dev = series(clean, parallel(styles, blades, fontGen));
 
-export const dev = series(clean, styles, fileInclude, fontGen);
-
-// exports.watch = watching;
+exports.watch = () => {
+    watch(['./res/style/*.scss', './res/components/*.scss', './res/components/**/*.scss'], styles);
+    watch(['./res/views/*.html', './res/layouts/*.html', '.res/components/**/*.html'], blades);
+    watch('./res/fonts/*.ttf', fontGen);
+};
