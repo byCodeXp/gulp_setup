@@ -7,7 +7,7 @@ import ttf2svg from 'gulp-ttf-svg';
 
 import { cfg } from '../configuration';
 
-export const fontGen = () => {
+export const fonts = () => {
     src(`${cfg.source}fonts/*.ttf`)
         .pipe(ttf2woff2())
         .pipe(dest(`${cfg.dest}fonts/`));
