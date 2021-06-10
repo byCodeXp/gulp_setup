@@ -1,14 +1,26 @@
 # Gulp Setup
+## Getting Started
 
-### Requirements
+Open shell in your directory, and run that command:
+```shell
+git clone https://github.com/byCodeXp/gulp_setup.git
+```
+Go to the folder:
+```shell
+cd gulp_setup
+```
+Then:
+```shell
+npm init
+```
 
-- Node.js
-- Gulp
-
-### Dependencies
+## Requirements
+- [Node.js](https://nodejs.org/en/)
+- [Gulp.js](https://gulpjs.com)
+## Dependencies
 - @babel/core
-- @babel/preset-env
 - @babel/register
+- @babel/preset-env
 - del
 - gulp
 - gulp-clean-css
@@ -18,7 +30,8 @@
 - gulp-ttf2eot
 - gulp-ttf2woff
 - gulp-ttf2woff2
-### Files Structure - Tree
+## Files Structure - Tree
+
 ```
 ┌ modules                       ┌───┬───────┬───────┬───────────┬─────────┬───────────┬─────┬─────────┬───┐
 ├ public                        ├─┐ └─┐ ╷ ╶─┘ ╶─┐ ╷ ╵ ┌───╴ ┌───┘ ╷ ┌───┐ ├─╴ ┌─────┬─┘ ╷ ╷ └───┬─╴ ┌─┘ ╷ │
@@ -46,3 +59,6 @@
 │  └─ styles			│ │ └─┴───┘ ╶─┘ └───┴─╴ └─┐ └─╴ └─┐ ╵ ╷ ╵ └─╴ ╷ └─╴ │ ╶───┘ │ ╵ ┌─╴ │ ╵ ╶─┤
 └─     └─ bootstrap		└─┴───────────────────────┴───────┴───┴───────┴─────┴───────┴───┴───┴─────┘
 ```
+
+## License
+This project is using the WTFPL license.
