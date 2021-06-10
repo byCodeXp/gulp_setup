@@ -1,5 +1,6 @@
 import del from 'del';
+import { cfg } from '../configuration';
 
 export const clean = () => (
-    del('./public/')
+    del(cfg.dest)
 );

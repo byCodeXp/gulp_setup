@@ -5,19 +5,21 @@ import ttf2woff from 'gulp-ttf2woff';
 import ttf2eot from 'gulp-ttf2eot';
 import ttf2svg from 'gulp-ttf-svg';
 
+import { cfg } from '../configuration';
+
 export const fontGen = () => {
-    src('./res/fonts/*.ttf')
+    src(`${cfg.source}fonts/*.ttf`)
         .pipe(ttf2woff2())
-        .pipe(dest('./public/fonts/'));
-    src('./res/fonts/*.ttf')
+        .pipe(dest(`${cfg.dest}fonts/`));
+    src(`${cfg.source}fonts/*.ttf`)
         .pipe(ttf2woff())
-        .pipe(dest('./public/fonts/'));
-    src('./res/fonts/*.ttf')
+        .pipe(dest(`${cfg.dest}fonts/`));
+    src(`${cfg.source}fonts/*.ttf`)
         .pipe(ttf2eot())
-        .pipe(dest('./public/fonts/'));
-    src('./res/fonts/*.ttf')
+        .pipe(dest(`${cfg.dest}fonts/`));
+    src(`${cfg.source}fonts/*.ttf`)
         .pipe(ttf2svg())
-        .pipe(dest('./public/fonts/'));
-    src('./res/fonts/*.ttf')
-        .pipe(dest('./public/fonts/'));
+        .pipe(dest(`${cfg.dest}fonts/`));
+    src(`${cfg.source}fonts/*.ttf`)
+        .pipe(dest(`${cfg.dest}fonts/`));
 };
