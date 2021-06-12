@@ -1,4 +1,4 @@
 export const config = {
     dest: './public/',
-    source: './res/'
+    source: './assets/'
 }
