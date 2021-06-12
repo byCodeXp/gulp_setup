@@ -1,5 +1,7 @@
 import template from '@bycodexp/template-views';
 
+import { config } from '../configuration';
+
 export const templates = () => (
-    template('./res/views/', './public/')
+    template(`${config.source}views/`, config.dest)
 );

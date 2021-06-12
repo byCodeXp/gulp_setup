@@ -1,4 +1,4 @@
-export const cfg = {
+export const config = {
     dest: './public/',
     source: './res/'
 }

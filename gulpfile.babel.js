@@ -5,10 +5,12 @@ import { styles } from './modules/styles';
 import { fonts } from './modules/font_gen';
 import { templates } from "./modules/templates";
 
+import { config } from './configuration';
+
 exports.dev = series(clean, parallel(styles, templates, fonts));
 
 exports.watch = () => {
-    watch(['./res/styles/*.scss', './res/styles/components/*.scss', '.res/layouts/*.scss'], styles);
-    watch(['./res/views/*.html', './res/layouts/*.html', '.res/components/*.html'], templates);
-    watch('./res/fonts/*.ttf', fonts);
+    watch([`${config.source}styles/*.scss`, `${config.source}styles/components/*.scss`, `${config.source}styles/layouts/*.scss`], styles);
+    watch([`${config.source}views/*.html`, `${config.source}views/layouts/*.html`, `${config.source}views/components/*.html`], templates);
+    watch(`${config.source}fonts/*.ttf`, fonts);
 };

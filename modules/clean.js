@@ -1,6 +1,6 @@
 import del from 'del';
-import { cfg } from '../configuration';
+import { config } from '../configuration';
 
 export const clean = () => (
-    del(cfg.dest)
+    del(config.dest)
 );
