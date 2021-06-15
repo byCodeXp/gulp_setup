@@ -4,10 +4,11 @@ import { clean } from './modules/clean';
 import { styles } from './modules/styles';
 import { fonts } from './modules/font_gen';
 import { templates } from "./modules/templates";
+import { pictures } from "./modules/pictures";
 
 import { config } from './configuration';
 
-exports.dev = series(clean, parallel(styles, templates, fonts));
+exports.dev = series(clean, parallel(styles, templates, fonts, pictures));
 
 exports.watch = () => {
     watch([`${config.source}styles/*.scss`, `${config.source}styles/components/*.scss`, `${config.source}styles/layouts/*.scss`], styles);
