@@ -10,7 +10,7 @@ import { config } from './configuration';
 
 exports.dev = series(clean, parallel(styles, templates, fonts, pictures));
 
-exports.watch = () => {
+exports.watching = () => {
     watch([`${config.source}styles/*.scss`, `${config.source}styles/components/*.scss`, `${config.source}styles/layouts/*.scss`], styles);
     watch([`${config.source}views/*.html`, `${config.source}views/layouts/*.html`, `${config.source}views/components/*.html`], templates);
     watch(`${config.source}fonts/*.ttf`, fonts);
